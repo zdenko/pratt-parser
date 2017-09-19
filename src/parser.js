@@ -1,15 +1,7 @@
 import {
-  EOFToken,
-  StringToken,
-  NumberToken,
-  OperatorToken,
-  IdentifierToken,
-  KeywordToken,
-  WhiteSpaceToken,
-  LineCommentToken
-} from './known-tokens';
-
-import { Tokenizer } from './tokenizer';
+  TokenizerTransformStream,
+  TokenMatcher
+} from 'transform-stream-tokens';
 
 /**
  * @module pratt-parser
@@ -81,15 +73,3 @@ export class Parser {
     return this.expression(this.token.precedence);
   }
 }
-
-export {
-  Tokenizer,
-  EOFToken,
-  StringToken,
-  NumberToken,
-  OperatorToken,
-  IdentifierToken,
-  KeywordToken,
-  WhiteSpaceToken,
-  LineCommentToken
-};

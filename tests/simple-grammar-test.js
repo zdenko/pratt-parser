@@ -1,6 +1,9 @@
 import test from 'ava';
 
-import { WhiteSpaceToken, NumberToken } from '../src/known-tokens';
+import {
+  TokenizerTransformStream,
+  TokenMatcher
+} from 'transform-stream-tokens';
 import { Parser } from '../src/parser';
 
 function value(value) {
@@ -11,8 +14,10 @@ function value(value) {
   });
 }
 
-const myGrammar = new Parser({
-  tokens: [WhiteSpaceToken, NumberToken],
+const myGrammar = new Parser(
+  new TokenizerTransformStream(new TokenMatcher([WhiteSpaceToken, NumberToken]))
+
+  /*
   prefix: {
     '(': {
       nud(grammar) {
@@ -41,7 +46,8 @@ const myGrammar = new Parser({
       combine: (left, right) => value(left.value / right.value)
     }
   }
-});
+  */
+);
 
 test('calculator simple', t => {
   t.is(myGrammar.parse('1 + 41 * 3 - 2').value, 122);

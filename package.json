@@ -4,12 +4,7 @@
   "main": "dist/parser.js",
   "module": "src/parser.js",
   "description": "TDOP parser",
-  "keywords": [
-    "tokenizer",
-    "parser",
-    "PRATT",
-    "TDOP"
-  ],
+  "keywords": ["tokenizer", "parser", "PRATT", "TDOP"],
   "engines": {
     "node": ">=8.4.0"
   },
@@ -18,7 +13,9 @@
     "url": "https://github.com/arlac77/pratt-parser/issues"
   },
   "homepage": "https://github.com/arlac77/pratt-parser#readme",
-  "dependencies": {},
+  "dependencies": {
+    "transform-stream-tokens": "1.0.0"
+  },
   "devDependencies": {
     "jsdoc-to-markdown": "^3.0.0",
     "markdown-doctest": "^0.9.1",
@@ -53,13 +50,8 @@
     }
   ],
   "nyc": {
-    "include": [
-      "build/test-bundle.js",
-      "src/**/*.js"
-    ],
-    "reporter": [
-      "lcov"
-    ],
+    "include": ["build/test-bundle.js", "src/**/*.js"],
+    "reporter": ["lcov"],
     "report-dir": "./build/coverage"
   },
   "template": {
@@ -71,14 +63,8 @@
     "space": true
   },
   "ava": {
-    "files": [
-      "build/test-bundle.js"
-    ],
-    "presets": [
-      "stage-3"
-    ],
-    "require": [
-      "babel-register"
-    ]
+    "files": ["build/test-bundle.js"],
+    "presets": ["stage-3"],
+    "require": ["babel-register"]
   }
 }

@@ -1,11 +1,14 @@
 import test from 'ava';
 
 import {
+  TokenizerTransformStream,
+  TokenMatcher,
   IdentifierToken,
+  KeywordToken,
   WhiteSpaceToken,
   NumberToken,
   StringToken
-} from '../src/known-tokens';
+} from 'transform-stream-tokens';
 import { Parser } from '../src/parser';
 
 function Value(value) {
