@@ -11,6 +11,7 @@ import {
 } from 'transform-stream-tokens';
 import { Parser } from '../src/parser';
 
+/*
 function Value(value) {
   return Object.create(null, {
     value: {
@@ -19,17 +20,13 @@ function Value(value) {
   });
 }
 
+
 const g = {
   tokens: [
     WhiteSpaceToken,
     NumberToken,
     StringToken,
 
-    /*Object.create(KeywordToken, {
-        keywords: {
-          values: ['true', 'false']
-        }
-      }), */
     Object.create(IdentifierToken, {
       parseString: {
         value(pp) {
@@ -122,9 +119,14 @@ const g = {
     ']': {}
   }
 };
-
+*/
 test('json simple array', t => {
-  const myGrammar = new Parser(g);
+  const myGrammar = new Parser(
+    new TokenizerTransformStream(
+      new TokenMatcher([WhiteSpaceToken, NumberToken])
+    )
+  );
+
   t.deepEqual(
     myGrammar.parse('[1,"b",[4],{ "c" : 5, "d" : true, "e": false}]').value,
     [

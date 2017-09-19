@@ -11,14 +11,6 @@ import {
 } from 'transform-stream-tokens';
 import { Parser } from '../src/parser';
 
-function Value(value) {
-  return Object.create(null, {
-    value: {
-      value: value
-    }
-  });
-}
-
 const identifiers = {
   array: [1, 2, 3, 4, 5, 6, 7]
 };
@@ -28,6 +20,15 @@ const functions = {
   noargs: args => Value('-- no args --'),
   onearg: args => args[0]
 };
+
+/*
+function Value(value) {
+  return Object.create(null, {
+    value: {
+      value: value
+    }
+  });
+}
 
 const g = {
   tokens: [
@@ -135,24 +136,42 @@ const g = {
     }
   }
 };
+*/
 
 test('mini_lang noargs', t => {
-  const myGrammar = new Parser(g);
+  const myGrammar = new Parser(
+    new TokenizerTransformStream(
+      new TokenMatcher([WhiteSpaceToken, NumberToken])
+    )
+  );
+
   t.is(myGrammar.parse('noargs()').value, '-- no args --');
 });
 
 test('mini_lang onearg', t => {
-  const myGrammar = new Parser(g);
+  const myGrammar = new Parser(
+    new TokenizerTransformStream(
+      new TokenMatcher([WhiteSpaceToken, NumberToken])
+    )
+  );
   t.is(myGrammar.parse('onearg("the arg")').value, 'the arg');
 });
 
 test('mini_lang concat', t => {
-  const myGrammar = new Parser(g);
+  const myGrammar = new Parser(
+    new TokenizerTransformStream(
+      new TokenMatcher([WhiteSpaceToken, NumberToken])
+    )
+  );
   t.is(myGrammar.parse('concat("A","B")').value, 'AB');
   t.is(myGrammar.parse('concat(concat("A","B"),"C")').value, 'ABC');
 });
 
 test('mini_lang array', t => {
-  const myGrammar = new Parser(g);
+  const myGrammar = new Parser(
+    new TokenizerTransformStream(
+      new TokenMatcher([WhiteSpaceToken, NumberToken])
+    )
+  );
   t.is(myGrammar.parse('array[3 * 2] + 2').value, 9);
 });
