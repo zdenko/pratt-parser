@@ -2,20 +2,14 @@ import test from 'ava';
 
 import {
   TokenizerTransformStream,
-  TokenMatcher
+  TokenMatcher,
+  WhiteSpaceToken,
+  NumberToken
 } from 'transform-stream-tokens';
 import { Parser } from '../src/parser';
 
-function value(value) {
-  return Object.create(null, {
-    value: {
-      value: value
-    }
-  });
-}
-
 const myGrammar = new Parser(
-  new TokenizerTransformStream(new TokenMatcher([WhiteSpaceToken, NumberToken]))
+  new TokenizerTransformStream(new TokenMatcher([]))
 
   /*
   prefix: {

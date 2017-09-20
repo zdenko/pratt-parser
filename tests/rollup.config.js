@@ -3,7 +3,7 @@ import multiEntry from 'rollup-plugin-multi-entry';
 
 export default {
   entry: 'tests/**/*-test.js',
-  external: ['ava'],
+  external: ['ava', 'transform-stream-tokens'],
   plugins: [
     babel({
       babelrc: false,

@@ -14,5 +14,6 @@ export default {
       presets: ['stage-3'],
       exclude: 'node_modules/**'
     })
-  ]
+  ],
+  external: ['transform-stream-tokens']
 };

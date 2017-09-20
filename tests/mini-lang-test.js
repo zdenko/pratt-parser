@@ -3,11 +3,11 @@ import test from 'ava';
 import {
   TokenizerTransformStream,
   TokenMatcher,
-  IdentifierToken,
-  KeywordToken,
+  //  IdentifierToken,
+  //  KeywordToken,
   WhiteSpaceToken,
-  NumberToken,
-  StringToken
+  NumberToken
+  //  StringToken
 } from 'transform-stream-tokens';
 import { Parser } from '../src/parser';
 
